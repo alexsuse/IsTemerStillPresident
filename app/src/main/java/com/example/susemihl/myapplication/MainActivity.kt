@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         // mainTextView.setText("Hello there.")
         mainButton.setOnClickListener {
+            mainButton.setText("Check again.")
             fetch_async("https://bookshelf-168523.appspot.com/", mainTextView)
         }
 
