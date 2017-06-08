@@ -13,7 +13,7 @@ suspend fun fetch_url(url: String): String {
     return URL(url).readText()
 }
 
-fun fetch_async(url: String, view: TextView) = runBlocking {
+fun fetch_response(url: String, view: TextView) = runBlocking {
     val result = async(CommonPool) { fetch_url(url) }
     view.setText(result.await())
 }
@@ -23,11 +23,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // mainTextView.setText("Hello there.")
         mainButton.setOnClickListener {
-            mainButton.setText("Check again.")
-            fetch_async("https://bookshelf-168523.appspot.com/", mainTextView)
+            fetch_response("https://bookshelf-168523.appspot.com", mainTextView)
+            mainButton.setText("Verifique de novo.")
         }
-
     }
 }
